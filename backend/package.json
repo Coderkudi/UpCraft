@@ -1,10 +1,13 @@
 {
   "name": "backend",
-  "module": "index.ts",
+  "module": "server.ts",
   "type": "module",
   "private": true,
   "devDependencies": {
     "@types/bun": "latest"
+  },
+  "scripts": {
+    "dev": "nodemon ./server.js"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -13,7 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "mongoose": "^8.19.3",
+    "mongoose": "^8.19.4",
     "nodemon": "^3.1.11"
   }
 }
