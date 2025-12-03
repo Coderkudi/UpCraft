@@ -2,6 +2,7 @@ import { verifyAccessToken } from "../utils/jwt.js";
 
 export default async (req, res, next) => {
   const header = req.headers.authorization;
+  console.log("headers: ", header);
   if (!header || !header.startsWith("Bearer "))
     return res.status(401).json({ message: "Unauthorized" });
 
