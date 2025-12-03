@@ -14,7 +14,6 @@ export default function Login() {
     try {
       const res = await api.post("/login", { email, password });
 
-      // 🔥 THIS IS WHERE YOU PUT IT
       authLogin(res.data.accessToken, res.data.user);
 
       alert("Logged in successfully");
