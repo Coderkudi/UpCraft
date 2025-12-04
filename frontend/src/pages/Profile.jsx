@@ -25,11 +25,11 @@ export default function Profile() {
   }, [accessToken]);
 
   const handleEditProfile = () => {
-    navigate("/updateProfile");
+    navigate("/update-profile");
   };
 
   const handleChangePassword = () => {
-    navigate("/changePassword");
+    navigate("/change-password");
   };
 
   const handleLogout = async () => {

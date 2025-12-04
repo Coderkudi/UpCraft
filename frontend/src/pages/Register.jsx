@@ -25,12 +25,14 @@ export default function Register() {
 
       <form onSubmit={handleRegister}>
         <input
+          className="border border-black p-2"
           type="text"
           placeholder="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <input
+          className="border border-black p-2"
           type="text"
           placeholder="Username"
           value={username}
@@ -38,6 +40,7 @@ export default function Register() {
         />
 
         <input
+          className="border border-black p-2"
           type="email"
           placeholder="Email"
           value={email}
@@ -45,6 +48,7 @@ export default function Register() {
         />
 
         <input
+          className="border border-black p-2"
           type="password"
           placeholder="Password"
           value={password}

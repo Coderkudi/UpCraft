@@ -53,6 +53,7 @@ export default function ChangePassword() {
         style={{ display: "flex", flexDirection: "column", gap: "10px" }}
       >
         <input
+          className="border border-black p-2"
           type="password"
           placeholder="Old Password"
           value={oldPassword}
@@ -61,6 +62,7 @@ export default function ChangePassword() {
         />
 
         <input
+          className="border border-black p-2"
           type="password"
           placeholder="New Password"
           value={newPassword}
@@ -69,6 +71,7 @@ export default function ChangePassword() {
         />
 
         <input
+          className="border border-black p-2"
           type="password"
           placeholder="Confirm New Password"
           value={confirmNewPassword}
