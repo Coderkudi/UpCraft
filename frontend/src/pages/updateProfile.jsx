@@ -38,6 +38,7 @@ export default function UpdateProfile() {
 
       <form onSubmit={handleSubmit}>
         <input
+          className="border border-black p-2"
           type="text"
           placeholder="Username"
           value={username}
@@ -45,6 +46,7 @@ export default function UpdateProfile() {
         />
 
         <input
+          className="border border-black p-2"
           type="email"
           placeholder="Email"
           value={email}

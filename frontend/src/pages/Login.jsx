@@ -29,6 +29,7 @@ export default function Login() {
 
       <form onSubmit={handleSubmit}>
         <input
+          className="border border-black p-2"
           type="email"
           placeholder="Email"
           value={email}
@@ -36,6 +37,7 @@ export default function Login() {
         />
 
         <input
+          className="border border-black p-2"
           type="password"
           placeholder="Password"
           value={password}
