@@ -1,16 +1,96 @@
-# React + Vite
+# UpCraft
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛠️ UpCraft
 
-Currently, two official plugins are available:
+UpCraft is a platform that empowers workers to **learn new skills**, **showcase their craft**, and **earn certifications** through practical training and assessments.
+It bridges the gap between **skilled workers** and **real-world opportunities**, offering a structured path for growth.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Project Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🎯 Purpose
 
-## Expanding the ESLint configuration
+- Help workers upskill through short video-based courses.
+- Provide small quizzes after each course to evaluate learning.
+- Generate **digital certificates** for those who pass.
+- Allow users to maintain a verified **profile dashboard** that can be shared with employers.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧩 Folder Structure
+
+UpCraft/
+│
+├── backend/ # Node.js + Express + MongoDB API
+│ ├── config/ # Database connection and configs
+│ ├── controllers/ # Core logic (auth, users, courses, quiz, etc.)
+│ ├── middleware/ # Auth, error handling, validation
+│ ├── models/ # MongoDB schemas
+│ ├── routes/ # Express route files
+│ ├── utils/ # Helper functions (JWT, email, cert generator)
+│ ├── .env # Environment variables
+│ ├── package.json
+│ └── server.js # Entry point
+│
+├── frontend/ # React + Tailwind client app
+│ ├── public/
+│ ├── src/
+│ │ ├── components/ # Reusable UI elements (Navbar, Footer, Cards)
+│ │ ├── pages/ # Page components (Login, Dashboard, Courses, etc.)
+│ │ ├── context/ # Auth context for state management
+│ │ ├── utils/ # Axios setup and helper functions
+│ │ ├── styles/ # Global styles and Tailwind config
+│ │ └── App.jsx # Routing setup
+│ ├── package.json
+│ └── vite.config.js
+│
+├── .gitignore
+└── README.md
+
+---
+
+## 👥 Team Division
+
+| Member                     | Role                      | Responsibilities                                                                                     |
+| -------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Team Lead - Rimmi**      | Authentication & Profile  | Build user signup/login, JWT auth, profile update system (backend) and related frontend forms/pages. |
+| **Teammate 2 - Shriparna** | Courses Module            | Manage course & lesson creation, enrollment, and course display frontend.                            |
+| **Teammate 3 - Ananya**    | Quiz & Certificate Module | Handle quizzes, results evaluation, and digital certificate generation with frontend integration.    |
+
+All three members will contribute equally to **frontend** and **backend**, as the project is evaluated in both subjects.
+
+---
+
+## ⚙️ Tech Stack
+
+| Category            | Technologies                                |
+| ------------------- | ------------------------------------------- |
+| **Frontend**        | React.js, Tailwind CSS, Axios, React Router |
+| **Backend**         | Node.js, Express.js, MongoDB (Mongoose)     |
+| **Authentication**  | JWT (JSON Web Tokens)                       |
+| **Version Control** | Git & GitHub                                |
+| **Tools**           | VS Code, Postman, Vite                      |
+
+---
+
+## 🧠 Example User Flow
+
+1. Worker signs up using email or phone number.
+2. Fills out their skill profile (e.g., Electrical, Carpentry).
+3. Browses courses and enrolls in one (e.g., _Basic Electrical Safety_).
+4. Watches training videos and completes lessons.
+5. Takes a small quiz after finishing.
+6. Upon passing, receives a **digital certificate**.
+7. Can view or share the certificate from their dashboard.
+
+---
+
+## ⚡ Getting Started
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/UpCraft.git
+cd UpCraft
+```
