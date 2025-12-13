@@ -32,15 +32,15 @@ export default function Profile() {
     navigate("/change-password");
   };
 
-  const handleLogout = async () => {
-    try {
-      await api.post("/logout");
-    } catch (error) {
-      console.log("Logout error", error);
-    }
+  // const handleLogout = async () => {
+  //   try {
+  //     await api.post("/logout");
+  //   } catch (error) {
+  //     console.log("Logout error", error);
+  //   }
 
-    logout();
-    navigate("/login");
+  //   logout();
+  //   navigate("/login");
   };
 
   if (!profile) {
@@ -102,7 +102,7 @@ export default function Profile() {
         >
           Change Password
         </button>
-        <button
+        {/* <button
           onClick={handleLogout}
           style={{
             padding: "10px 20px",
@@ -112,7 +112,7 @@ export default function Profile() {
           }}
         >
           Logout
-        </button>
+        </button> */}
       </div>
     </div>
   );
