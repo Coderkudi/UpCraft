@@ -1,12 +1,7 @@
 
 import mongoose from "mongoose";
 
-const certificateSchema = new mongoose.Schema({
-    certificateId: {
-        type: String,
-        required: true,
-        unique: true,
-    },
+const quizResultSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -16,14 +11,22 @@ const certificateSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    courseName: {
-        type: String,
+    score: {
+        type: Number,
         required: true,
     },
-    issuedAt: {
+    percentage: {
+        type: Number,
+        required: true,
+    },
+    passed: {
+        type: Boolean,
+        required: true,
+    },
+    attemptedAt: {
         type: Date,
         default: Date.now,
     },
 });
 
-export default mongoose.model("Certificate", certificateSchema);
+export default mongoose.model("QuizResult", quizResultSchema);
