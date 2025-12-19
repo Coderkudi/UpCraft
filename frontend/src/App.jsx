@@ -6,7 +6,6 @@ import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import ChangePassword from "./pages/changePassword";
 import UpdateProfile from "./pages/updateProfile";
-import Navbar from "./components/Navbar";
 import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
