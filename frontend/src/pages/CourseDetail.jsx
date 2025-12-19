@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-<<<<<<< HEAD
 import api from '../api/axios';
-=======
-import api from '../api/axiosmock';
->>>>>>> feature/quiz-certifications
 import { PlayCircle, CheckCircle, Lock, Trophy, Award, ArrowLeft } from 'lucide-react';
 
 const CourseDetail = () => {

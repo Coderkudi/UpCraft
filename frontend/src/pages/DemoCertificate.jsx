@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import api from '../api/axiosmock';
 import { Loader2, Download, CheckCircle, Share2, Home } from 'lucide-react';
-import jsPDF from 'jspdf';
+import {jsPDF} from 'jspdf';
 import CertificatePreview from '../components/CertificatePreview';
 // import { generateCertificatePNG } from '../utils/certificateGenerator';
 
@@ -22,7 +22,7 @@ const DemoCertificate = () => {
             // For now, redirect to ensure security compliance per instructions
             console.warn("Missing certificate state, redirecting...");
             // In a real app we might fetch by ID here, but for this specific "after generation" flow:
-            // navigate(`/course/${courseId}`); 
+            // navigate(`/course/${courseId}`);
         }
         setLoading(false);
     }, [location.state, navigate, courseId]);

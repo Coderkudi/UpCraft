@@ -11,7 +11,7 @@ const CertificatePreview = forwardRef(({ studentName, courseName, date }, ref) =
                 className="w-[800px] h-[600px] relative bg-white flex flex-col p-0 text-slate-900"
             >
                 {/* --- DECORATIVE ACCENT BAR --- */}
-                <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-blue-600 via-blue-400 to-green-400" />
+                <div className="absolute top-0 left-0 w-full h-3 .bg-gradient-to-r from-blue-600 via-blue-400 to-green-400" />
 
                 {/* --- BACKGROUND PATTERN (Subtle) --- */}
                 <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
@@ -51,7 +51,7 @@ const CertificatePreview = forwardRef(({ studentName, courseName, date }, ref) =
                         <h3 className="text-4xl font-bold text-slate-900 mb-2">
                             {studentName || "Demo Learner"}
                         </h3>
-                        <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-green-400 rounded-full mt-4"></div>
+                        <div className="h-1 w-24 .bg-gradient-to-r from-blue-500 to-green-400 rounded-full mt-4"></div>
                     </div>
 
                     <div>

@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -9,15 +8,10 @@ import ChangePassword from "./pages/changePassword";
 import UpdateProfile from "./pages/updateProfile";
 import React from "react";
 import Navbar from "./components/Navbar";
-<<<<<<< HEAD
 import Home from "./pages/Home";
-import CourseList from "./pages/CourseList";
-import CourseDetail from "./pages/CourseDetail";
 import Lesson from "./pages/Lesson";
-import Quiz from "./pages/Certificate";
-import Certificate from "./pages/Certificate";
-=======
 
+import Courses from "./pages/Courses";
 
 import CourseList from "./pages/CourseList";
 import CourseDetail from "./pages/CourseDetail";
@@ -25,7 +19,6 @@ import DemoLesson from "./pages/DemoLesson";
 import DemoQuiz from "./pages/DemoQuiz";
 import DemoQuizResult from "./pages/DemoQuizResult";
 import DemoCertificate from "./pages/DemoCertificate";
->>>>>>> feature/quiz-certifications
 
 export default function App() {
   return (
@@ -33,11 +26,9 @@ export default function App() {
       <Navbar />
 
       <Routes>
-       
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-       
         <Route path="/" element={<CourseList />} />
         <Route path="/course/:courseId" element={<CourseDetail />} />
         <Route
@@ -54,7 +45,6 @@ export default function App() {
           element={<DemoCertificate />}
         />
 
-        
         <Route
           path="/profile"
           element={
