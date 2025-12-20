@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+<<<<<<< HEAD
   const [error, setError] = useState("");
 
+=======
+>>>>>>> 7ed628b8f8371d184454d4a2bc5afd4557121ae8
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -20,6 +24,7 @@ export default function Register() {
       return;
     }
 
+<<<<<<< HEAD
     if (password.length < 6) {
       setError("Password must be at least 6 characters");
       return;
@@ -39,6 +44,10 @@ export default function Register() {
         err.response?.data?.message || "Registration failed. Try again."
       );
     }
+=======
+    alert("Registered!");
+    navigate("/login");
+>>>>>>> 7ed628b8f8371d184454d4a2bc5afd4557121ae8
   };
 
   return (
@@ -51,6 +60,7 @@ export default function Register() {
           </p>
         </div>
 
+<<<<<<< HEAD
         <div className="p-6 pt-0">
           <form onSubmit={handleRegister} className="space-y-4">
             <div className="space-y-1">
@@ -85,6 +95,39 @@ export default function Register() {
                 className="w-full rounded-md bg-gray-800 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
+=======
+      <form onSubmit={handleRegister}>
+        <input
+          className="border border-black p-2"
+          type="text"
+          placeholder="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          className="border border-black p-2"
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <input
+          className="border border-black p-2"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          className="border border-black p-2"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+>>>>>>> 7ed628b8f8371d184454d4a2bc5afd4557121ae8
 
             <div className="space-y-1">
               <label className="text-sm text-gray-300">Password</label>
