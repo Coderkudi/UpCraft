@@ -4,6 +4,7 @@
     "@types/express": "^5.0.5",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "jspdf": "^3.0.4",
     "router": "^2.2.0"
   }
 }
