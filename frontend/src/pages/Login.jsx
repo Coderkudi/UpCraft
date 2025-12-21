@@ -24,7 +24,11 @@ export default function Login() {
 
     try {
       setLoading(true);
-      const res = await api.post("/login", { email, password });
+
+      const res = await api.post("/login", {
+        email,
+        password,
+      });
 
       authLogin(res.data.accessToken, res.data.user);
       navigate("/");
@@ -40,27 +44,32 @@ export default function Login() {
       <div className="w-full max-w-md rounded-xl border border-gray-800 bg-gray-900 shadow-lg">
         <div className="p-6 space-y-2 text-center">
           <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
-          <p className="text-sm text-gray-400">
-            Sign in to continue tracking your habits
-          </p>
+          <p className="text-sm text-gray-400">Sign in to continue learning</p>
         </div>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          className="border border-black p-2"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div className="p-6 pt-0">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-1">
+              <label className="text-sm text-gray-300">Email</label>
+              <input
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-md bg-gray-800 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-        <input
-          className="border border-black p-2"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+            <div className="space-y-1">
+              <label className="text-sm text-gray-300">Password</label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-md bg-gray-800 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
             {error && (
               <p className="text-sm text-red-500 text-center">{error}</p>
@@ -81,7 +90,7 @@ export default function Login() {
               to="/register"
               className="text-blue-400 hover:underline font-medium"
             >
-              Sign up
+              Create one
             </Link>
           </div>
         </div>

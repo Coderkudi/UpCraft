@@ -45,74 +45,69 @@ export default function Profile() {
 
   if (!profile) {
     return (
-      <div style={{ padding: "20px", fontSize: "20px", color: "white" }}>
-        Loading profile...
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center text-gray-300 text-lg">
+        Loading profile…
       </div>
     );
   }
 
   return (
-    <div
-      style={{
-        maxWidth: "600px",
-        margin: "40px auto",
-        padding: "20px",
-        background: "#1e1e1e",
-        color: "white",
-        borderRadius: "8px",
-      }}
-    >
-      <h2 style={{ marginBottom: "20px" }}>My Profile</h2>
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center px-4">
+      <div className="w-full max-w-lg bg-gray-900 border border-gray-800 rounded-2xl shadow-xl p-8">
+        {/* Header */}
+        <div className="mb-8 text-center">
+          <div className="w-20 h-20 mx-auto rounded-full bg-blue-600/20 flex items-center justify-center text-blue-400 text-3xl font-bold mb-4">
+            {profile.username.charAt(0).toUpperCase()}
+          </div>
+          <h2 className="text-2xl font-bold text-white">My Profile</h2>
+          <p className="text-sm text-gray-400">
+            Manage your account information
+          </p>
+        </div>
 
-      <p>
-        <strong>Username:</strong> {profile.username}
-      </p>
+        {/* Profile Info */}
+        <div className="space-y-4 text-gray-300">
+          <div className="flex justify-between border-b border-gray-800 pb-2">
+            <span className="text-gray-400">Username</span>
+            <span className="font-medium text-white">{profile.username}</span>
+          </div>
 
-      <p>
-        <strong>Email:</strong> {profile.email}
-      </p>
+          <div className="flex justify-between border-b border-gray-800 pb-2">
+            <span className="text-gray-400">Email</span>
+            <span className="font-medium text-white">{profile.email}</span>
+          </div>
 
-      <p>
-        <strong>Joined:</strong> {new Date(profile.createdAt).toDateString()}
-      </p>
+          <div className="flex justify-between">
+            <span className="text-gray-400">Joined</span>
+            <span className="font-medium text-white">
+              {new Date(profile.createdAt).toDateString()}
+            </span>
+          </div>
+        </div>
 
-      <div style={{ marginTop: "20px" }}>
-        <button
-          onClick={handleEditProfile}
-          style={{
-            marginRight: "10px",
-            padding: "10px 20px",
-            background: "#4ea1ff",
-            color: "white",
-            borderRadius: "6px",
-          }}
-        >
-          Edit Profile
-        </button>
+        {/* Actions */}
+        <div className="mt-10 flex flex-col gap-3">
+          <button
+            onClick={handleEditProfile}
+            className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition font-medium text-white"
+          >
+            Edit Profile
+          </button>
 
-        <button
-          onClick={handleChangePassword}
-          style={{
-            marginRight: "10px",
-            padding: "10px 20px",
-            background: "#ffa34e",
-            color: "white",
-            borderRadius: "6px",
-          }}
-        >
-          Change Password
-        </button>
-        <button
-          onClick={handleLogout}
-          style={{
-            padding: "10px 20px",
-            background: "red",
-            color: "white",
-            borderRadius: "6px",
-          }}
-        >
-          Logout
-        </button>
+          <button
+            onClick={handleChangePassword}
+            className="w-full py-3 rounded-lg bg-yellow-600 hover:bg-yellow-700 transition font-medium text-white"
+          >
+            Change Password
+          </button>
+
+          <button
+            onClick={handleLogout}
+            className="w-full py-3 rounded-lg bg-red-600 hover:bg-red-700 transition font-medium text-white"
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   );

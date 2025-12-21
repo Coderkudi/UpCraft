@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/axios";
-import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -19,8 +21,29 @@ export default function Register() {
       return;
     }
 
-    alert("Registered!");
-    navigate("/login");
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      await api.post("/register", {
+        name,
+        username,
+        email,
+        password,
+      });
+
+      navigate("/login");
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Registration failed. Try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -29,41 +52,44 @@ export default function Register() {
         <div className="p-6 space-y-2 text-center">
           <h1 className="text-3xl font-bold text-white">Create Account</h1>
           <p className="text-sm text-gray-400">
-            Start building better habits today
+            Start building better skills today
           </p>
         </div>
 
-      <form onSubmit={handleRegister}>
-        <input
-          className="border border-black p-2"
-          type="text"
-          placeholder="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          className="border border-black p-2"
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <div className="p-6 pt-0">
+          <form onSubmit={handleRegister} className="space-y-4">
+            <div className="space-y-1">
+              <label className="text-sm text-gray-300">Full Name</label>
+              <input
+                type="text"
+                placeholder="John Doe"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full rounded-md bg-gray-800 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-        <input
-          className="border border-black p-2"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+            <div className="space-y-1">
+              <label className="text-sm text-gray-300">Username</label>
+              <input
+                type="text"
+                placeholder="john_doe"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full rounded-md bg-gray-800 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-        <input
-          className="border border-black p-2"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+            <div className="space-y-1">
+              <label className="text-sm text-gray-300">Email</label>
+              <input
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-md bg-gray-800 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
             <div className="space-y-1">
               <label className="text-sm text-gray-300">Password</label>
@@ -82,9 +108,10 @@ export default function Register() {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 transition rounded-md py-2 font-medium text-white"
+              disabled={loading}
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition rounded-md py-2 font-medium text-white"
             >
-              Create Account
+              {loading ? "Creating account..." : "Create Account"}
             </button>
           </form>
 

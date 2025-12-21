@@ -6,6 +6,7 @@ export default function UpdateProfile() {
   const { accessToken, user, login } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!user) return;
@@ -17,44 +18,68 @@ export default function UpdateProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await api.put(
-      "/update-profile",
-      { username, email },
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
+    try {
+      setLoading(true);
 
-    login(accessToken, res.data.user);
+      const res = await api.put(
+        "/update-profile",
+        { username, email },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
 
-    alert("Profile updated!");
+      login(accessToken, res.data.user);
+      alert("Profile updated!");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div style={{ maxWidth: "500px", margin: "40px auto" }}>
-      <h2>Update Profile</h2>
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-gray-900 border border-gray-800 rounded-2xl shadow-xl p-8">
+        {/* Header */}
+        <div className="mb-8 text-center">
+          <h2 className="text-2xl font-bold text-white">Update Profile</h2>
+          <p className="text-sm text-gray-400">Edit your account details</p>
+        </div>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          className="border border-black p-2"
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="space-y-1">
+            <label className="text-sm text-gray-300">Username</label>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full rounded-md bg-gray-800 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-        <input
-          className="border border-black p-2"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <div className="space-y-1">
+            <label className="text-sm text-gray-300">Email</label>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full rounded-md bg-gray-800 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-        <button type="submit">Save</button>
-      </form>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium text-white"
+          >
+            {loading ? "Saving..." : "Save Changes"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

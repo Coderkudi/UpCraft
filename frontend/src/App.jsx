@@ -1,20 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
+
+import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Profile from "./pages/Profile";
 import Register from "./pages/Register";
+import Profile from "./pages/Profile";
 import ChangePassword from "./pages/changePassword";
 import UpdateProfile from "./pages/updateProfile";
-import React from "react";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Lesson from "./pages/Lesson";
-
-import Courses from "./pages/Courses";
 
 import CourseList from "./pages/CourseList";
 import CourseDetail from "./pages/CourseDetail";
+import Lesson from "./pages/Lesson";
+
 import DemoLesson from "./pages/DemoLesson";
 import DemoQuiz from "./pages/DemoQuiz";
 import DemoQuizResult from "./pages/DemoQuizResult";
@@ -26,15 +25,15 @@ export default function App() {
       <Navbar />
 
       <Routes>
+        {/* PUBLIC */}
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/courses" element={<CourseList />} />
 
-        <Route path="/" element={<CourseList />} />
+        {/* COURSE FLOW */}
         <Route path="/course/:courseId" element={<CourseDetail />} />
-        <Route
-          path="/course/:courseId/lesson/:lessonId"
-          element={<DemoLesson />}
-        />
+        <Route path="/course/:courseId/lesson/:lessonId" element={<Lesson />} />
         <Route path="/course/:courseId/quiz" element={<DemoQuiz />} />
         <Route
           path="/course/:courseId/quiz/result"
@@ -45,6 +44,7 @@ export default function App() {
           element={<DemoCertificate />}
         />
 
+        {/* PROTECTED */}
         <Route
           path="/profile"
           element={
@@ -53,7 +53,6 @@ export default function App() {
             </PrivateRoute>
           }
         />
-
         <Route
           path="/change-password"
           element={
@@ -62,7 +61,6 @@ export default function App() {
             </PrivateRoute>
           }
         />
-
         <Route
           path="/update-profile"
           element={
@@ -71,12 +69,7 @@ export default function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/course/:courseId" element={<CourseDetail />} />
-        <Route path="/course/:courseId/lesson/:lessonId" element={<Lesson />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
-// <Route path="/" element={<Home />} />
